@@ -1,5 +1,6 @@
 package com.a1qa;
 
+import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -16,6 +17,7 @@ public final class DriverManager {
 
     public static DriverManager getInstance(){
         if (instance == null) {
+            ChromeDriverManager.getInstance().setup();
             instance = new DriverManager();
         }
         return instance;
