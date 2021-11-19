@@ -23,6 +23,12 @@ public final class DriverManager {
         return instance;
     }
 
+    public static void wqwq() {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("lang=ru");
+        instance.driver = new ChromeDriver(chromeOptions);
+    }
+
     public WebDriver getDriver() {
         return driver;
     }
