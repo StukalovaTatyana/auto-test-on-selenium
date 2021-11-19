@@ -46,67 +46,53 @@ public class ChromeTest {
 
     @Test
     public void testCaseOne() {
-        try {
-            driver.get(Configuration.getUrl());
-        } catch (Exception e) {
-            fail("Main page does not load", e);
-        }
+        assertDoesNotThrow("Main page does not load", () ->
+                driver.get(Configuration.getUrl())
+        );
 
-        try {
+        assertDoesNotThrow("About page does not load", () -> {
             mainPage.clickAboutBtn();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("global_header")));
-        } catch (Exception e) {
-            fail("About page does not load", e);
-        }
+        });
 
         long countOnline = aboutPage.getCountOnline();
         long countPlaying = aboutPage.getCountPlaying();
 
         assertTrue(countOnline > countPlaying);
 
-        try {
+        assertDoesNotThrow("Store page does not load", () -> {
             aboutPage.clickStoreBtn();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("global_header")));
-        } catch (Exception e) {
-            fail("Store page does not load", e);
-        }
+        });
     }
 
     @Test
     public void testCaseThree() {
-        try {
-            driver.get(Configuration.getUrl());
-        } catch (Exception e) {
-            fail("Main page does not load", e);
-        }
+        assertDoesNotThrow("Main page does not load", () ->
+                driver.get(Configuration.getUrl())
+        );
         mainPage.moveMouseToCommunity();
         double opacity = mainPage.getCommunitySubmenuOpacity();
         assertTrue(opacity > 0.5);
-        try {
+        assertDoesNotThrow("Market page does not load", () -> {
             mainPage.clickCommunitySubmenuMarket();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("BG_top")));
-        } catch (Exception e) {
-            fail("Market page does not load", e);
-        }
-        try {
+        });
+        assertDoesNotThrow("Search form does not load", () -> {
             marketPage.clickAdvancedOptionsBtn();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/div[@class = 'newmodal']")));
-        } catch (Exception e) {
-            fail("Search form does not load", e);
-        }
+        });
         marketPage.clickListGames();
 
-        try {
+        assertDoesNotThrow("Hero does not load", () -> {
             marketPage.clickDota();
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@name='category_570_Hero[]']")));
-        } catch (Exception e) {
-            fail("Hero does not load", e);
-        }
+        });
 
         marketPage.clickHeroList();
 
@@ -156,5 +142,13 @@ public class ChromeTest {
     @AfterClass
     private void closeBrowser() {
         driver.close();
+    }
+
+    private void assertDoesNotThrow(String errorMessage, Runnable f) {
+        try {
+            f.run();
+        } catch (Exception e) {
+            fail(errorMessage, e);
+        }
     }
 }
