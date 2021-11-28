@@ -1,10 +1,16 @@
 package com.a1qa.pages;
 
+import com.a1qa.DriverManager;
+import com.a1qa.config.Configuration;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,9 +22,8 @@ public class MarketPage {
     @FindBy(xpath = "//div[@id=\"app_option_0_selected\"]")
     private WebElement listGames;
     @FindBy(xpath = "//div[@id=\"app_option_570\"]")
-    private WebElement dota;
+    private WebElement game;
     @FindBy(xpath = "//select[@name='category_570_Hero[]']")
-//    @FindBy(xpath = "//input[@id='tag_570_Rarity_Rarity_Immortal']")
     private WebElement heroList;
     @FindBy(xpath = "//option[@value='tag_npc_dota_hero_life_stealer']")
     private WebElement hero;
@@ -32,22 +37,27 @@ public class MarketPage {
     private List<WebElement> filters;
     @FindBy(xpath = "//div[@id='searchResultsRows']//a//div[@class='market_listing_row market_recent_listing_row market_listing_searchresult']//div[@class='market_listing_item_name_block']")
     private List<WebElement> searchResultList;
+    private final int DEFAULT_TIMEOUT = Configuration.getDefaultTimeout();
 
-    public MarketPage(WebDriver driver) {
-        this.driver = driver;
+    public MarketPage() {
+        this.driver = DriverManager.getInstance().getDriver();
         PageFactory.initElements(driver, this);
     }
 
     public void clickAdvancedOptionsBtn() {
         advancedOptions.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//body/div[@class = 'newmodal']")));
     }
 
     public void clickListGames() {
         listGames.click();
     }
 
-    public void clickDota() {
-        dota.click();
+    public void clickGame() {
+        game.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//select[@name='category_570_Hero[]']")));
     }
 
     public void clickHeroList() {
@@ -58,7 +68,7 @@ public class MarketPage {
         hero.click();
     }
 
-    public void clickImmortal() {
+    public void clickRarity() {
         immortal.click();
     }
 
@@ -68,6 +78,8 @@ public class MarketPage {
 
     public void clickSearchBtn() {
         searchButton.click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
+        wait.withTimeout(Duration.ofSeconds(2));
     }
 
     public List<String> getFiltersText() {

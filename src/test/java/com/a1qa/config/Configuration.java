@@ -33,13 +33,24 @@ public class Configuration {
     private static String getProperty(String key) {
         return PROPERTIES.getProperty(key);
     }
-    public static int getScreenWidth(){
+
+    public static int getScreenWidth() {
         return Integer.parseInt(getProperty("screenWidth"));
     }
-    public static int getScreenHeight(){
+
+    public static int getScreenHeight() {
         return Integer.parseInt(getProperty("screenHeight"));
     }
-    public static String getUrl(){
+
+    public static String getUrl() {
         return getProperty("steamPage");
+    }
+
+    public static int getDefaultTimeout() {
+        return Integer.parseInt(getProperty("defaultTimeout"));
+    }
+
+    public static String getLang() {
+        return getProperty("lang");
     }
 }

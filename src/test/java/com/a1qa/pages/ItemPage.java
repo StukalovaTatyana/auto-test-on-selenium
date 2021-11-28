@@ -1,5 +1,6 @@
 package com.a1qa.pages;
 
+import com.a1qa.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,13 +12,11 @@ public class ItemPage {
     private WebElement itemName;
     @FindBy(xpath = "//div[@id='largeiteminfo_item_descriptors']//div[1]")
     private WebElement heroName;
-    @FindBy(xpath = "//div[@id='largeiteminfo_game_name']")
-    private WebElement game;
     @FindBy(xpath = "//div[@id='largeiteminfo_item_type']")
     private WebElement rarity;
 
-    public ItemPage(WebDriver driver) {
-        this.driver = driver;
+    public ItemPage() {
+        this.driver = DriverManager.getInstance().getDriver();
         PageFactory.initElements(driver, this);
     }
 
@@ -27,10 +26,6 @@ public class ItemPage {
 
     public String getHeroName() {
         return heroName.getText();
-    }
-
-    public String getGame() {
-        return game.getText();
     }
 
     public String getRarity() {

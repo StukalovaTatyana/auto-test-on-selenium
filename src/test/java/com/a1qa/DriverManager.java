@@ -1,6 +1,8 @@
 package com.a1qa;
 
+import com.a1qa.config.Configuration;
 import io.github.bonigarcia.wdm.managers.ChromeDriverManager;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -9,13 +11,24 @@ public final class DriverManager {
     private static DriverManager instance;
     private WebDriver driver;
 
-    private DriverManager(){
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("lang=en-GB");
-        driver = new ChromeDriver(chromeOptions);
+    private DriverManager() {
     }
 
-    public static DriverManager getInstance(){
+    public WebDriver openBrowser() {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("lang=" + Configuration.getLang());
+        this.driver = new ChromeDriver(chromeOptions);
+        this.driver
+                .manage()
+                .window()
+                .setSize(new Dimension(
+                        Configuration.getScreenWidth(),
+                        Configuration.getScreenHeight()
+                ));
+        return this.driver;
+    }
+
+    public static DriverManager getInstance() {
         if (instance == null) {
             ChromeDriverManager.getInstance().setup();
             instance = new DriverManager();
@@ -23,13 +36,7 @@ public final class DriverManager {
         return instance;
     }
 
-    public static void wqwq() {
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("lang=ru");
-        instance.driver = new ChromeDriver(chromeOptions);
-    }
-
     public WebDriver getDriver() {
-        return driver;
+        return this.driver;
     }
 }
