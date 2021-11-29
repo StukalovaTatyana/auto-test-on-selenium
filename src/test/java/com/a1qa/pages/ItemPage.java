@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ItemPage {
-    private WebDriver driver;
+    private final WebDriver driver;
     @FindBy(xpath = "//h1[@id='largeiteminfo_item_name']")
     private WebElement itemName;
     @FindBy(xpath = "//div[@id='largeiteminfo_item_descriptors']//div[1]")

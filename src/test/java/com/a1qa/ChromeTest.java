@@ -1,6 +1,5 @@
 package com.a1qa;
 
-import com.a1qa.config.Configuration;
 import com.a1qa.pages.AboutPage;
 import com.a1qa.pages.ItemPage;
 import com.a1qa.pages.MainPage;
@@ -21,7 +20,6 @@ public class ChromeTest {
     private MarketPage marketPage;
     private ItemPage itemPage;
 
-
     @BeforeMethod
     public void setupClass() {
         driver = DriverManager.getInstance().openBrowser();
@@ -35,7 +33,7 @@ public class ChromeTest {
     @Test
     public void testCaseOne() {
         assertDoesNotThrow("Main page does not load", () ->
-                driver.get(Configuration.getUrl())
+                mainPage.openMainPage()
         );
 
         assertDoesNotThrow("About page does not load", () -> mainPage.clickAboutBtn());
@@ -51,7 +49,7 @@ public class ChromeTest {
     @Test
     public void testCaseThree() {
         assertDoesNotThrow("Main page does not load", () ->
-                driver.get(Configuration.getUrl())
+                mainPage.openMainPage()
         );
         mainPage.moveMouseToCommunity();
         double opacity = mainPage.getCommunitySubmenuOpacity();

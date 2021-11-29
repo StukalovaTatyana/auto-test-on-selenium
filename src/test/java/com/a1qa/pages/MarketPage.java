@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class MarketPage {
-    private WebDriver driver;
+    private final WebDriver driver;
     @FindBy(xpath = "//div[@class='market_search_advanced_button']")
     private WebElement advancedOptions;
     @FindBy(xpath = "//div[@id=\"app_option_0_selected\"]")

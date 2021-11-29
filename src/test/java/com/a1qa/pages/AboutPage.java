@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class AboutPage {
-    private WebDriver driver;
+    private final WebDriver driver;
     @FindBy(xpath = "//div[@class='online_stat'][1]")
     private WebElement online;
     @FindBy(xpath = "//div[@class='online_stat'][2]")
@@ -25,7 +25,6 @@ public class AboutPage {
     public AboutPage() {
         this.driver = DriverManager.getInstance().getDriver();
         PageFactory.initElements(driver, this);
-
     }
 
     public Long getCountOnline() {

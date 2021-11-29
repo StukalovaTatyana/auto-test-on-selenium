@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class MainPage {
-    private WebDriver driver;
+    private final WebDriver driver;
     @FindBy(xpath = "//div[@id='global_header']//a[@class='menuitem'][1]")
     private WebElement about;
     @FindBy(xpath = "//div[@class='supernav_container']//a[@class='menuitem supernav'][2]")
@@ -45,9 +45,16 @@ public class MainPage {
         String opacity = communitySubmenu.getCssValue("opacity");
         return Double.parseDouble(opacity);
     }
+
     public void clickCommunitySubmenuMarket() {
         market.click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("BG_top")));
+    }
+
+    public void openMainPage() {
+        driver.get(Configuration.getUrl());
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("global_header")));
     }
 }
