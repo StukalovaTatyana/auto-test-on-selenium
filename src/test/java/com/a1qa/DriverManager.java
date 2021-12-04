@@ -17,14 +17,15 @@ public final class DriverManager {
     public WebDriver openBrowser() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("lang=" + Configuration.getLang());
+        chromeOptions.addArguments("--window-size="+Configuration.getScreenWidth()+","+Configuration.getScreenHeight());
         this.driver = new ChromeDriver(chromeOptions);
-        this.driver
+        /*this.driver
                 .manage()
                 .window()
                 .setSize(new Dimension(
                         Configuration.getScreenWidth(),
                         Configuration.getScreenHeight()
-                ));
+                ));*/
         return this.driver;
     }
 

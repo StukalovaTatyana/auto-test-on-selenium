@@ -31,7 +31,7 @@ public class ChromeTest {
     }
 
     @Test
-    public void testCaseOne() {
+    public void countPlayingLowerThenOnlineTest() {
         assertDoesNotThrow("Main page does not load", () ->
                 mainPage.openMainPage()
         );
@@ -47,7 +47,7 @@ public class ChromeTest {
     }
 
     @Test
-    public void testCaseThree() {
+    public void tradeMarketFilterTest() {
         assertDoesNotThrow("Main page does not load", () ->
                 mainPage.openMainPage()
         );
