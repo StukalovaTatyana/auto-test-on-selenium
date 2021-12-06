@@ -22,8 +22,10 @@ public class BaseForm {
         try {
             WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getDriver(), Duration.ofSeconds(Configuration.getDefaultLongTimeout()));
             wait.until(ExpectedConditions.visibilityOfElementLocated(uniqElement));
+            System.out.println(name+" is open");
             return true;
         } catch (Exception e) {
+            System.out.println(name+" does not open");
             return false;
         }
     }

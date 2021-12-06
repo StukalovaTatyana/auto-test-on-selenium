@@ -51,5 +51,9 @@ public class Configuration {
     public static String getBrowserName(){
         return getProperty("browser");
     }
+
+    public static String getTestDataPath() {
+        return getProperty("testDataPath");
+    }
 }
 
