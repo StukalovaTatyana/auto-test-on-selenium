@@ -3,6 +3,7 @@ package com.a1qa.pages;
 import com.a1qa.elements.ButtonElement;
 import com.a1qa.elements.DivElement;
 import com.a1qa.elements.ListItemElement;
+import com.a1qa.elements.SpanElement;
 import com.a1qa.utils.DriverManager;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -15,7 +16,10 @@ public class AlertPage extends BaseForm {
     private ListItemElement alertElement;
     private DivElement alertForm;
     private ButtonElement alertButton;
-//    private ButtonElement alertButtonWithDelay;
+    private ButtonElement confirmButton;
+    private SpanElement confirmResult;
+    private ButtonElement promptButton;
+    private SpanElement promptResult;
 
     public AlertPage() {
         super(By.xpath("//section[@id='botton-text-10']"), "alertPage");
@@ -27,8 +31,15 @@ public class AlertPage extends BaseForm {
                 "alertForm");
         alertButton = new ButtonElement(
                 By.xpath("//button[@id='alertButton']"), "alertButton");
-//        alertButtonWithDelay = new ButtonElement(
-//                By.xpath("//button[@id='timerAlertButton']"), "alertButtonWithDelay");
+        confirmButton = new ButtonElement(
+                By.xpath("//button[@id='confirmButton']"), "alertButtonWithDelay");
+        confirmResult = new SpanElement(
+                By.xpath("//span[@id='confirmResult']"), "confirmResult");
+        promptButton = new ButtonElement(
+                By.xpath("//button[@id='promtButton']"), "promptButton");
+        promptResult = new SpanElement(
+                By.xpath("//span[@id='promptResult']"), "promptResult");
+
     }
 
     public void clickAlertListElement() {
@@ -56,12 +67,24 @@ public class AlertPage extends BaseForm {
         }
     }
 
-//    public void clickAlertButtonWithDelay() {
-//        alertButtonWithDelay.click();
-//    }
+    public void clickConfirmButton() {
+        confirmButton.click();
+    }
 
     public Alert waitForAlert(int duration) {
         WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getDriver(), Duration.ofSeconds(duration));
         return wait.until(driver -> driver.switchTo().alert());
+    }
+
+    public String getConfirmResult() {
+        return confirmResult.getText();
+    }
+
+    public void clickPromptButton() {
+        promptButton.click();
+    }
+
+    public String getPromptResult() {
+        return promptResult.getText();
     }
 }

@@ -3,6 +3,8 @@ package com.a1qa.elements;
 import com.a1qa.config.Configuration;
 import com.a1qa.utils.DriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -42,8 +44,11 @@ public class BaseElement {
     }
 
     public void focus() {
-        Actions actions = new Actions(DriverManager.getInstance().getDriver());
-        actions.moveToElement(findElement()).build().perform();
+        WebDriver driver = DriverManager.getInstance().getDriver();
+        //scroll before move mouse
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", findElement());
+        Actions actions = new Actions(driver);
+        actions.moveToElement(findElement()).perform();
     }
 
 }
