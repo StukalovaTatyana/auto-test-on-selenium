@@ -1,9 +1,8 @@
 package com.a1qa.pages;
 
 import com.a1qa.elements.ButtonElement;
-import com.a1qa.elements.DivElement;
 import com.a1qa.elements.ListItemElement;
-import com.a1qa.elements.SpanElement;
+import com.a1qa.elements.TextElement;
 import com.a1qa.utils.DriverManager;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -13,31 +12,31 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class AlertPage extends BaseForm {
-    private ListItemElement alertElement;
-    private DivElement alertForm;
-    private ButtonElement alertButton;
-    private ButtonElement confirmButton;
-    private SpanElement confirmResult;
-    private ButtonElement promptButton;
-    private SpanElement promptResult;
+    private final ListItemElement alertElement;
+    private final TextElement alertForm;
+    private final ButtonElement alertButton;
+    private final ButtonElement confirmButton;
+    private final TextElement confirmResult;
+    private final ButtonElement promptButton;
+    private final TextElement promptResult;
 
     public AlertPage() {
         super(By.xpath("//section[@id='botton-text-10']"), "alertPage");
         alertElement = new ListItemElement(
                 By.xpath("//div[@class ='element-list collapse show']//ul//li[@id='item-1']"),
                 "alertsElement");
-        alertForm = new DivElement(
+        alertForm = new TextElement(
                 By.xpath("//div[@id='javascriptAlertsWrapper']"),
                 "alertForm");
         alertButton = new ButtonElement(
                 By.xpath("//button[@id='alertButton']"), "alertButton");
         confirmButton = new ButtonElement(
                 By.xpath("//button[@id='confirmButton']"), "alertButtonWithDelay");
-        confirmResult = new SpanElement(
+        confirmResult = new TextElement(
                 By.xpath("//span[@id='confirmResult']"), "confirmResult");
         promptButton = new ButtonElement(
                 By.xpath("//button[@id='promtButton']"), "promptButton");
-        promptResult = new SpanElement(
+        promptResult = new TextElement(
                 By.xpath("//span[@id='promptResult']"), "promptResult");
 
     }

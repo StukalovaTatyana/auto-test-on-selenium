@@ -9,19 +9,19 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class BrowserFactory {
-    public static WebDriver getWebDriver(){
-        switch (Configuration.getBrowserName()){
+    public static WebDriver getWebDriver() {
+        switch (Configuration.getBrowserName()) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("lang=" + Configuration.getLang());
-                chromeOptions.addArguments("--window-size="+Configuration.getScreenWidth()+","+Configuration.getScreenHeight());
+                chromeOptions.addArguments("--window-size=" + Configuration.getScreenWidth() + "," + Configuration.getScreenHeight());
                 return new ChromeDriver(chromeOptions);
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 firefoxOptions.addArguments("lang=" + Configuration.getLang());
-                firefoxOptions.addArguments("--window-size="+Configuration.getScreenWidth()+","+Configuration.getScreenHeight());
+                firefoxOptions.addArguments("--window-size=" + Configuration.getScreenWidth() + "," + Configuration.getScreenHeight());
 
                 return new FirefoxDriver(firefoxOptions);
             default:

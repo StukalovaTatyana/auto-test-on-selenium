@@ -8,7 +8,7 @@ public class TestDataConfiguration {
     protected static Properties PROPERTIES;
 
     static {
-        try (FileInputStream fileInputStream = new FileInputStream(Configuration.getTestDataPath())){
+        try (FileInputStream fileInputStream = new FileInputStream(Configuration.getTestDataPath())) {
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);
         } catch (IOException e) {

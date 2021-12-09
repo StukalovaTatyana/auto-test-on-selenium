@@ -1,8 +1,6 @@
 package com.a1qa;
 
-import com.a1qa.pages.AlertPage;
-import com.a1qa.pages.IframePage;
-import com.a1qa.pages.MainPage;
+import com.a1qa.pages.*;
 import com.a1qa.utils.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -13,6 +11,8 @@ public class BaseTest {
     protected MainPage mainPage;
     protected AlertPage alertPage;
     protected IframePage iframePage;
+    protected FramesPage framesPage;
+    protected ElementsPage elementsPage;
 
     @BeforeMethod
     protected void setupClass() {
@@ -20,6 +20,8 @@ public class BaseTest {
         mainPage = new MainPage();
         alertPage = new AlertPage();
         iframePage = new IframePage();
+        framesPage = new FramesPage();
+        elementsPage = new ElementsPage();
     }
 
     @AfterMethod

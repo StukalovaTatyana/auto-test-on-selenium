@@ -10,8 +10,8 @@ import java.time.Duration;
 
 public class BaseForm {
 
-    private By uniqElement;
-    private String name;
+    private final By uniqElement;
+    private final String name;
 
     public BaseForm(By locator, String name) {
         this.uniqElement = locator;
@@ -22,10 +22,10 @@ public class BaseForm {
         try {
             WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getDriver(), Duration.ofSeconds(Configuration.getDefaultLongTimeout()));
             wait.until(ExpectedConditions.visibilityOfElementLocated(uniqElement));
-            System.out.println(name+" is open");
+            System.out.println(name + " is open");
             return true;
         } catch (Exception e) {
-            System.out.println(name+" does not open");
+            System.out.println(name + " does not open");
             return false;
         }
     }

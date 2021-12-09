@@ -13,8 +13,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class BaseElement {
-    private By locator;
-    private String name;
+    private final By locator;
+    private final String name;
 
     public BaseElement(By locator, String name) {
         this.locator = locator;

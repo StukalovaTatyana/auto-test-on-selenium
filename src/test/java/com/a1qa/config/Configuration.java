@@ -8,7 +8,7 @@ public class Configuration {
     protected static Properties PROPERTIES;
 
     static {
-        try (FileInputStream fileInputStream = new FileInputStream("src/test/resources/conf.properties")){
+        try (FileInputStream fileInputStream = new FileInputStream("src/test/resources/conf.properties")) {
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);
         } catch (IOException e) {
@@ -38,9 +38,11 @@ public class Configuration {
     public static int getDefaultLongTimeout() {
         return Integer.parseInt(getProperty("defaultLongTimeout"));
     }
-    public static int getDefaultMiddleTimeout(){
+
+    public static int getDefaultMiddleTimeout() {
         return Integer.parseInt(getProperty("defaultMiddleTimeout"));
     }
+
     public static int getDefaultShortTimeout() {
         return Integer.parseInt(getProperty("defaultShortTimeout"));
     }
@@ -48,7 +50,8 @@ public class Configuration {
     public static String getLang() {
         return getProperty("lang");
     }
-    public static String getBrowserName(){
+
+    public static String getBrowserName() {
         return getProperty("browser");
     }
 
