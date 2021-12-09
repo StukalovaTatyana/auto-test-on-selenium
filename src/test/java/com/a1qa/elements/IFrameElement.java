@@ -1,19 +1,21 @@
 package com.a1qa.elements;
 
 import com.a1qa.utils.DriverManager;
+import com.a1qa.utils.LoggerManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
 public class IFrameElement extends BaseElement {
     public IFrameElement(By locator, String name) {
         super(locator, name);
     }
 
-    public WebDriver switchToFrameDriver() {
-        return DriverManager.getInstance().getDriver().switchTo().frame(findElement());
+    public void switchToFrameDriver() {
+        LoggerManager.getLogger().info("driver switched to " + name);
+        DriverManager.getInstance().getDriver().switchTo().frame(findElement());
     }
 
-    public WebDriver switchToMainDriver() {
-        return DriverManager.getInstance().getDriver().switchTo().defaultContent();
+    public void switchToMainDriver() {
+        LoggerManager.getLogger().info("reset to main driver in " + name);
+        DriverManager.getInstance().getDriver().switchTo().defaultContent();
     }
 }

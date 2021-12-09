@@ -1,5 +1,6 @@
 package com.a1qa.elements;
 
+import com.a1qa.utils.LoggerManager;
 import org.openqa.selenium.By;
 
 public class TextElement extends BaseElement {
@@ -8,6 +9,7 @@ public class TextElement extends BaseElement {
     }
 
     public String getText() {
+        LoggerManager.getLogger().info("get text from element: " + name);
         return findElement().getText();
     }
 }
