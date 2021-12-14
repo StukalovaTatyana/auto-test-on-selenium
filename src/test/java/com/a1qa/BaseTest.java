@@ -13,6 +13,8 @@ public class BaseTest {
     protected IframePage iframePage;
     protected FramesPage framesPage;
     protected ElementsPage elementsPage;
+    protected BrowserWindowPage browserWindow;
+    protected LinksPage linksPage;
 
     @BeforeMethod
     protected void setupClass() {
@@ -22,9 +24,11 @@ public class BaseTest {
         iframePage = new IframePage();
         framesPage = new FramesPage();
         elementsPage = new ElementsPage();
+        browserWindow = new BrowserWindowPage();
+        linksPage = new LinksPage();
     }
 
-    @AfterMethod
+    //@AfterMethod
     protected void closeBrowser() {
         driver.quit();
     }

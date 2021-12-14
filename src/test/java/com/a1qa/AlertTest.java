@@ -1,5 +1,6 @@
 package com.a1qa;
 
+import com.a1qa.pages.AlertPage;
 import com.a1qa.utils.TextGenerator;
 import org.openqa.selenium.Alert;
 import org.testng.annotations.Test;
