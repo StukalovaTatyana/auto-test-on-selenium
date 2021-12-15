@@ -15,6 +15,7 @@ public class BaseTest {
     protected ElementsPage elementsPage;
     protected BrowserWindowPage browserWindow;
     protected LinksPage linksPage;
+    protected WidgetsPage widgetsPage;
 
     @BeforeMethod
     protected void setupClass() {
@@ -26,9 +27,10 @@ public class BaseTest {
         elementsPage = new ElementsPage();
         browserWindow = new BrowserWindowPage();
         linksPage = new LinksPage();
+        widgetsPage = new WidgetsPage();
     }
 
-    //@AfterMethod
+    @AfterMethod
     protected void closeBrowser() {
         driver.quit();
     }

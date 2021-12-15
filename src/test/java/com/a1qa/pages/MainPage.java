@@ -8,16 +8,21 @@ import org.openqa.selenium.By;
 public class MainPage extends BaseForm {
     private final TextElement alertCard;
     private final TextElement elementsCard;
+    private final TextElement widgets;
 
     public MainPage() {
         super(By.xpath("//*[@id='app']"), "mainPage");
         alertCard = new TextElement(
-                By.xpath("//div[@class='card-body']//h5[contains(text(),'Alerts')]//..//..//.."),
+                By.xpath("//div[@class='card-body']//h5[contains(text(),'Alerts')]/../../.."),
                 "alertCard"
         );
         elementsCard = new TextElement(
-                By.xpath("//div[@class='card-body']//h5[contains(text(),'Elements')]//..//..//.."),
+                By.xpath("//div[@class='card-body']//h5[contains(text(),'Elements')]/../../.."),
                 "elementsCard"
+        );
+        widgets = new TextElement(
+                By.xpath("//div[@class='card-body']//h5[contains(text(),'Widgets')]/../../.."),
+                "widgets"
         );
     }
 
@@ -31,6 +36,9 @@ public class MainPage extends BaseForm {
 
     public void clickElementsCard() {
         elementsCard.click();
+    }
+    public void clickWidgetsCard(){
+        widgets.click();
     }
 }
 

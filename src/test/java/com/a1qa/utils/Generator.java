@@ -2,7 +2,7 @@ package com.a1qa.utils;
 
 import java.util.Random;
 
-public class TextGenerator {
+public class Generator {
     public static String textGenerate(int numberOfWords) {
         String[] randomStrings = new String[numberOfWords];
         Random random = new Random();
@@ -14,5 +14,10 @@ public class TextGenerator {
             randomStrings[i] = new String(word);
         }
         return String.join(" ", randomStrings);
+    }
+    public static int numberGenerate(){
+        Random random = new Random();
+        int generateNumber = random.nextInt(100);
+        return generateNumber;
     }
 }

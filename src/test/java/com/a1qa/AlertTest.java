@@ -1,7 +1,6 @@
 package com.a1qa;
 
-import com.a1qa.pages.AlertPage;
-import com.a1qa.utils.TextGenerator;
+import com.a1qa.utils.Generator;
 import org.openqa.selenium.Alert;
 import org.testng.annotations.Test;
 
@@ -42,7 +41,7 @@ public class AlertTest extends BaseTest {
         alert = alertPage.switchToAlert();
         assertNotNull(alert);
         assertEquals(alert.getText(), "Please enter your name");
-        String text = TextGenerator.textGenerate(5);
+        String text = Generator.textGenerate(5);
         alert.sendKeys(text);
         alert.accept();
         alert = alertPage.switchToAlert();
