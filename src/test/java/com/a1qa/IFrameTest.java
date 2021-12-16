@@ -9,19 +9,19 @@ public class IFrameTest extends BaseTest {
     @Test
     public void iframeTest() {
         mainPage.openMainPage();
-        assertTrue(mainPage.isPageOpened());
+        assertTrue(mainPage.isPageOpened(), "The main page does not open");
 
         mainPage.clickAlertCard();
-        assertTrue(iframePage.isPageOpened());
+        assertTrue(iframePage.isPageOpened(), "The page with Nested Frames does not open");
 
         iframePage.clickIframeListElement();
         String textFromParentFrame = iframePage.getTextFromParentFrame();
         String textFromChildrenFrame = iframePage.getTextFromChildrenFrame();
-        assertEquals(textFromParentFrame, "Parent frame");
-        assertEquals(textFromChildrenFrame, "Child Iframe");
+        assertEquals(textFromParentFrame, "Parent frame", "Parent frame not contains in page");
+        assertEquals(textFromChildrenFrame, "Child Iframe", "Child Iframe not contains in page");
 
         iframePage.clickFramesListElement();
-        assertTrue(framesPage.isPageOpened());
-        assertEquals(framesPage.getTextFromTopFrame(), framesPage.getTextFromBotFrame());
+        assertTrue(framesPage.isPageOpened(), "The frames page does not open");
+        assertEquals(framesPage.getTextFromTopFrame(), framesPage.getTextFromBotFrame(), "The text of the upper frame does not match the text of the lower frame");
     }
 }

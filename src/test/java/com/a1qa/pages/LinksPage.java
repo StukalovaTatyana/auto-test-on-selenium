@@ -8,27 +8,26 @@ import org.openqa.selenium.WebDriver;
 import java.util.Iterator;
 import java.util.Set;
 
-public class LinksPage extends BaseForm{
-    private final ButtonElement simpleLink;
-
+public class LinksPage extends BaseForm {
+    private final ButtonElement simpleLink = new ButtonElement(
+            By.xpath("//a[@id='simpleLink']"), "simpleLink");
 
     public LinksPage() {
         super(By.xpath("//section[@id='botton-text-10']"), "linksPage");
-        simpleLink = new ButtonElement(
-                By.xpath("//a[@id='simpleLink']"), "simpleLink");
     }
 
-    public void clickSimpleLink(){
+    public void clickSimpleLink() {
         simpleLink.click();
     }
-    public void switchToNewTab(){
+
+    public void switchToNewTab() {
         WebDriver driver = DriverManager.getInstance().getDriver();
         String mainWindow = driver.getWindowHandle();
         Set<String> setWindows = driver.getWindowHandles();
         Iterator<String> iterator = setWindows.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             String childWindow = iterator.next();
-            if (!childWindow.equalsIgnoreCase(mainWindow)){
+            if (!childWindow.equalsIgnoreCase(mainWindow)) {
                 driver.switchTo().window(childWindow);
             }
         }

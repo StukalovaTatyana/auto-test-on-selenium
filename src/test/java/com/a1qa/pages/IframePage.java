@@ -6,27 +6,21 @@ import com.a1qa.elements.TextElement;
 import org.openqa.selenium.By;
 
 public class IframePage extends BaseForm {
-    private final ListItemElement iframeElement;
-    private final ListItemElement framesElement;
-    private final IFrameElement parentFrame;
-    private final TextElement parentFrameBody;
-    private final IFrameElement childFrame;
-    private final TextElement childFrameBody;
+    private final ListItemElement iframeElement = new ListItemElement(
+            By.xpath("//div[@class ='element-list collapse show']//ul//li[@id='item-3']"), "iframeElement");
+    private final ListItemElement framesElement = new ListItemElement(
+            By.xpath("//div[@class ='element-list collapse show']//ul//li[@id='item-2']"), "framesElement");
+    private final IFrameElement parentFrame = new IFrameElement(
+            By.xpath("//iframe[@id='frame1']"), "parentFrame");
+    private final TextElement parentFrameBody = new TextElement(
+            By.xpath("//body"), "parentFrameBody");
+    private final IFrameElement childFrame = new IFrameElement(
+            By.xpath("//iframe"), "childFrame");
+    private final TextElement childFrameBody = new TextElement(
+            By.xpath("//body"), "childFrameBody");
 
     public IframePage() {
         super(By.xpath("//section[@id='botton-text-10']"), "iframePage");
-        iframeElement = new ListItemElement(
-                By.xpath("//div[@class ='element-list collapse show']//ul//li[@id='item-3']"), "iframeElement");
-        framesElement = new ListItemElement(
-                By.xpath("//div[@class ='element-list collapse show']//ul//li[@id='item-2']"), "framesElement");
-        parentFrame = new IFrameElement(
-                By.xpath("//iframe[@id='frame1']"), "parentFrame");
-        parentFrameBody = new TextElement(
-                By.xpath("//body"), "parentFrameBody");
-        childFrame = new IFrameElement(
-                By.xpath("//iframe"), "childFrame");
-        childFrameBody = new TextElement(
-                By.xpath("//body"), "childFrameBody");
     }
 
     public void clickIframeListElement() {

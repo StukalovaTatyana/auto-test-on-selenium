@@ -12,33 +12,25 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class AlertPage extends BaseForm {
-    private final ListItemElement alertElement;
-    private final TextElement alertForm;
-    private final ButtonElement alertButton;
-    private final ButtonElement confirmButton;
-    private final TextElement confirmResult;
-    private final ButtonElement promptButton;
-    private final TextElement promptResult;
+    private final ListItemElement alertElement = new ListItemElement(
+            By.xpath("//div[@class ='element-list collapse show']//ul//li[@id='item-1']"),
+            "alertsElement");
+    private final TextElement alertForm = new TextElement(
+            By.xpath("//div[@id='javascriptAlertsWrapper']"),
+            "alertForm");
+    private final ButtonElement alertButton = new ButtonElement(
+            By.xpath("//button[@id='alertButton']"), "alertButton");
+    private final ButtonElement confirmButton = new ButtonElement(
+            By.xpath("//button[@id='confirmButton']"), "alertButtonWithDelay");
+    private final TextElement confirmResult = new TextElement(
+            By.xpath("//span[@id='confirmResult']"), "confirmResult");
+    private final ButtonElement promptButton = new ButtonElement(
+            By.xpath("//button[@id='promtButton']"), "promptButton");
+    private final TextElement promptResult = new TextElement(
+            By.xpath("//span[@id='promptResult']"), "promptResult");
 
     public AlertPage() {
         super(By.xpath("//section[@id='botton-text-10']"), "alertPage");
-        alertElement = new ListItemElement(
-                By.xpath("//div[@class ='element-list collapse show']//ul//li[@id='item-1']"),
-                "alertsElement");
-        alertForm = new TextElement(
-                By.xpath("//div[@id='javascriptAlertsWrapper']"),
-                "alertForm");
-        alertButton = new ButtonElement(
-                By.xpath("//button[@id='alertButton']"), "alertButton");
-        confirmButton = new ButtonElement(
-                By.xpath("//button[@id='confirmButton']"), "alertButtonWithDelay");
-        confirmResult = new TextElement(
-                By.xpath("//span[@id='confirmResult']"), "confirmResult");
-        promptButton = new ButtonElement(
-                By.xpath("//button[@id='promtButton']"), "promptButton");
-        promptResult = new TextElement(
-                By.xpath("//span[@id='promptResult']"), "promptResult");
-
     }
 
     public void clickAlertListElement() {

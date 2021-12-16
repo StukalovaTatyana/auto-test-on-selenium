@@ -11,30 +11,25 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class WidgetsPage extends BaseForm {
-    private final ListItemElement sliderListItem;
-    private final ListItemElement progressBarListItem;
-    private final TextElement sliderForm;
-    private final InputElement slider;
-    private final InputElement sliderTextBox;
-    private final TextElement progressBarForm;
-    private final ButtonElement startStopButton;
-    private final ProgressBarElement progressBarElement;
+    private final ListItemElement sliderListItem = new ListItemElement(
+            By.xpath("//div[@class ='element-list collapse show']//ul//li[@id='item-3']"), "sliderPage");
+    private final ListItemElement progressBarListItem = new ListItemElement(
+            By.xpath("//div[@class ='element-list collapse show']//ul//li[@id='item-4']"), "progressBarList");
+    private final TextElement sliderForm = new TextElement(
+            By.xpath("//div[@id='sliderContainer']"), "sliderForm");
+    private final TextElement progressBarForm = new TextElement(
+            By.xpath("//div[@id='progressBarContainer']"), "progressBarForm");
+    private final InputElement slider = new InputElement(
+            By.xpath("//input[@class='range-slider range-slider--primary']"), "slider");
+    private final InputElement sliderTextBox = new InputElement(
+            By.xpath("//input[@id='sliderValue']"), "sliderTextBox");
+    private final ButtonElement startStopButton = new ButtonElement(
+            By.xpath("//button[@id='startStopButton']"), "startStopButton");
+    private final ProgressBarElement progressBarElement = new ProgressBarElement(
+            By.xpath("//div[@class='progress-bar bg-info']"), "progressBarElement");
 
     public WidgetsPage() {
         super(By.xpath("//section[@id='botton-text-10']"), "widgetPage");
-        sliderListItem = new ListItemElement(
-                By.xpath("//div[@class ='element-list collapse show']//ul//li[@id='item-3']"), "sliderPage"
-        );
-        progressBarListItem = new ListItemElement(
-                By.xpath("//div[@class ='element-list collapse show']//ul//li[@id='item-4']"), "progressBarList"
-        );
-        sliderForm = new TextElement(By.xpath("//div[@id='sliderContainer']"), "sliderForm");
-        progressBarForm = new TextElement(By.xpath("//div[@id='progressBarContainer']"), "progressBarForm");
-        slider = new InputElement(By.xpath("//input[@class='range-slider range-slider--primary']"), "slider");
-        sliderTextBox = new InputElement(By.xpath("//input[@id='sliderValue']"), "sliderTextBox");
-        startStopButton = new ButtonElement(By.xpath("//button[@id='startStopButton']"), "startStopButton");
-        progressBarElement = new ProgressBarElement(By.xpath("//div[@class='progress-bar bg-info']"), "progressBarElement");
-
     }
 
     public void clickSliderListElement() {
@@ -99,8 +94,7 @@ public class WidgetsPage extends BaseForm {
         clickStartStopButton();
     }
 
-    public String getAreaValueNow(){
+    public String getAreaValueNow() {
         return progressBarElement.getAreaValueNow();
     }
-
 }

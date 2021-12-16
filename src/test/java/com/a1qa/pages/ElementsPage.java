@@ -10,58 +10,34 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ElementsPage extends BaseForm {
-    private final ListItemElement webTablesElement;
-    private final TableElement tableElement;
-    private final ButtonElement addButton;
-    private final TextElement formElement;
-    private final InputElement firstNameElement;
-    private final InputElement lastNameElement;
-    private final InputElement emailElement;
-    private final InputElement ageElement;
-    private final InputElement salaryElement;
-    private final InputElement departmentElement;
-    private final ButtonElement submitButton;
-    private final ButtonElement deleteButton;
-//    private List<TextElement> textElements;
+    private final ListItemElement webTablesElement = new ListItemElement(
+            By.xpath("//div[@class ='element-list collapse show']//ul//li[@id='item-3']"), "webTablesElement");
+    private final TableElement tableElement = new TableElement(
+            By.xpath("//div[@class='rt-table']"), "tableElement");
+    private final ButtonElement addButton = new ButtonElement(
+            By.xpath("//button[@id='addNewRecordButton']"), "addButton");
+    private final TextElement formElement = new TextElement(
+            By.xpath("//div[@class='modal-content']"), "formElement");
+    private final InputElement firstNameElement = new InputElement(
+            By.xpath("//div[@id='firstName-wrapper']//input"), "firstName");
+    private final InputElement lastNameElement = new InputElement(
+            By.xpath("//div[@id='lastName-wrapper']//input"), "lastName");
+    private final InputElement emailElement = new InputElement(
+            By.xpath("//div[@id='userEmail-wrapper']//input"), "email");
+    private final InputElement ageElement = new InputElement(
+            By.xpath("//div[@id='age-wrapper']//input"), "age");
+    private final InputElement salaryElement = new InputElement(
+            By.xpath("//div[@id='salary-wrapper']//input"), "salary");
+    private final InputElement departmentElement = new InputElement(
+            By.xpath("//div[@id='department-wrapper']//input"), "department");
+    private final ButtonElement submitButton = new ButtonElement(
+            By.xpath("//button[@id='submit']"), "submitButton");
+    private final ButtonElement deleteButton = new ButtonElement(
+            By.xpath("//span[@id='delete-record-3']"), "deleteButton");
 
     public ElementsPage() {
         super(By.xpath("//section[@id='botton-text-10']"), "elementsPage");
-        webTablesElement = new ListItemElement(
-                By.xpath("//div[@class ='element-list collapse show']//ul//li[@id='item-3']"), "webTablesElement"
-        );
-        tableElement = new TableElement(
-                By.xpath("//div[@class='rt-table']"), "tableElement"
-        );
-        addButton = new ButtonElement(
-                By.xpath("//button[@id='addNewRecordButton']"), "addButton"
-        );
-        formElement = new TextElement(
-                By.xpath("//div[@class='modal-content']"), "formElement"
-        );
-        firstNameElement = new InputElement(
-                By.xpath("//div[@id='firstName-wrapper']//input"), "firstName"
-        );
-        lastNameElement = new InputElement(
-                By.xpath("//div[@id='lastName-wrapper']//input"), "lastName"
-        );
-        emailElement = new InputElement(
-                By.xpath("//div[@id='userEmail-wrapper']//input"), "email"
-        );
-        ageElement = new InputElement(
-                By.xpath("//div[@id='age-wrapper']//input"), "age"
-        );
-        salaryElement = new InputElement(
-                By.xpath("//div[@id='salary-wrapper']//input"), "salary"
-        );
-        departmentElement = new InputElement(
-                By.xpath("//div[@id='department-wrapper']//input"), "department"
-        );
-        submitButton = new ButtonElement(
-                By.xpath("//button[@id='submit']"), "submitButton"
-        );
-        deleteButton = new ButtonElement(
-                By.xpath("//span[@id='delete-record-3']"), "deleteButton"
-        );
+
     }
 
     public void clickWebTablesListElement() {

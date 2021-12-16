@@ -6,24 +6,18 @@ import com.a1qa.utils.DriverManager;
 import org.openqa.selenium.By;
 
 public class MainPage extends BaseForm {
-    private final TextElement alertCard;
-    private final TextElement elementsCard;
-    private final TextElement widgets;
+    private final TextElement alertCard = new TextElement(
+            By.xpath("//div[@class='card-body']//h5[contains(text(),'Alerts')]/../../.."),
+            "alertCard");
+    private final TextElement elementsCard = new TextElement(
+            By.xpath("//div[@class='card-body']//h5[contains(text(),'Elements')]/../../.."),
+            "elementsCard");
+    private final TextElement widgets = new TextElement(
+            By.xpath("//div[@class='card-body']//h5[contains(text(),'Widgets')]/../../.."),
+            "widgets");
 
     public MainPage() {
         super(By.xpath("//*[@id='app']"), "mainPage");
-        alertCard = new TextElement(
-                By.xpath("//div[@class='card-body']//h5[contains(text(),'Alerts')]/../../.."),
-                "alertCard"
-        );
-        elementsCard = new TextElement(
-                By.xpath("//div[@class='card-body']//h5[contains(text(),'Elements')]/../../.."),
-                "elementsCard"
-        );
-        widgets = new TextElement(
-                By.xpath("//div[@class='card-body']//h5[contains(text(),'Widgets')]/../../.."),
-                "widgets"
-        );
     }
 
     public void openMainPage() {
@@ -37,7 +31,8 @@ public class MainPage extends BaseForm {
     public void clickElementsCard() {
         elementsCard.click();
     }
-    public void clickWidgetsCard(){
+
+    public void clickWidgetsCard() {
         widgets.click();
     }
 }
