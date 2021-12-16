@@ -1,8 +1,10 @@
 package com.a1qa;
 
+import com.a1qa.elements.IFrameElement;
 import com.a1qa.pages.ElementsPage;
 import com.a1qa.pages.MainPage;
 import com.a1qa.utils.DriverManager;
+import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -10,21 +12,26 @@ import java.util.List;
 import static org.testng.Assert.*;
 
 public class TablesTest extends BaseTest {
+    final static Logger LOGGER = Logger.getLogger(IFrameElement.class.toString());
 
     @Test
     public void tablesTest() {
+        LOGGER.info("Opening main page");
         MainPage mainPage = new MainPage();
         DriverManager.openMainPage();
         assertTrue(mainPage.waitForPageToOpenAndCheckIfOpen(), "The main page does not open");
 
+        LOGGER.info("Try to click on the 'Elements'");
         mainPage.clickElementsCard();
         ElementsPage elementsPage = new ElementsPage();
         assertTrue(elementsPage.waitForPageToOpenAndCheckIfOpen(), "The page with Web Tables does not open");
 
+        LOGGER.info("Try to click on the 'Add'");
         elementsPage.clickWebTablesListElement();
         assertTrue(elementsPage.isTableDisplayed(),
                 "The Registration Form does not appear on the page");
 
+        LOGGER.info("Enter user data User. from the table and then click on the Submit button");
         elementsPage.clickAddButton();
         assertTrue(elementsPage.isFormDisplayed(), "The registration form is not closed");
 
@@ -52,6 +59,8 @@ public class TablesTest extends BaseTest {
         for (int i = 0; i < lastInsertedRow.length; i++) {
             assertEquals(lastInsertedRow[i], testData[i], "Incorrect data inserted");
         }
+
+        LOGGER.info("Click on the Delete button in the user line User");
         elementsPage.clickDeleteButton();
         int sizeAfterDelete = elementsPage.findTableRows().size();
         assertTrue(sizeBeforeDelete > sizeAfterDelete,

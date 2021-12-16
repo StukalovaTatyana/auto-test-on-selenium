@@ -10,7 +10,7 @@ public class InputElement extends BaseElement {
     }
 
     public void sendText(String text) {
-        LoggerManager.getLogger().info("set text: " + text + " in element: " + name);
+        LOGGER.info("set text: " + text + " in element: " + name);
         findElement().sendKeys(text);
     }
 

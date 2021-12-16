@@ -1,13 +1,15 @@
 package com.a1qa.elements;
 
 import com.a1qa.utils.DriverManager;
-import com.a1qa.utils.LoggerManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
 public class ElementsList {
+    final static Logger LOGGER = Logger.getLogger(IFrameElement.class.toString());
+
     private final By locator;
     private final String name;
 
@@ -17,7 +19,7 @@ public class ElementsList {
     }
 
     public List<WebElement> findElements() {
-        LoggerManager.getLogger().info("try to find list of elements: " + name);
+        LOGGER.info("try to find list of elements: " + name);
         return DriverManager.getInstance().findElements(locator);
     }
 }

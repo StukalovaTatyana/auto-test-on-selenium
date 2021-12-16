@@ -1,9 +1,11 @@
 package com.a1qa.pages;
 
 import com.a1qa.elements.BaseElement;
-import com.a1qa.utils.LoggerManager;
+import com.a1qa.elements.IFrameElement;
+import org.apache.log4j.Logger;
 
 public abstract class BaseForm {
+    final static Logger LOGGER = Logger.getLogger(IFrameElement.class.toString());
 
     private final BaseElement uniqElement;
     private final String name;
@@ -16,10 +18,10 @@ public abstract class BaseForm {
     public boolean waitForPageToOpenAndCheckIfOpen() {
         try {
             uniqElement.waitForIsDisplayed();
-            LoggerManager.getLogger().info(name + " is open");
+            LOGGER.info(name + " is open");
             return true;
         } catch (Exception e) {
-            LoggerManager.getLogger().info(name + " does not open");
+            LOGGER.info(name + " does not open");
             return false;
         }
     }
