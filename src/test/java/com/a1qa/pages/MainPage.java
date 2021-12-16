@@ -1,8 +1,6 @@
 package com.a1qa.pages;
 
-import com.a1qa.config.Configuration;
 import com.a1qa.elements.TextElement;
-import com.a1qa.utils.DriverManager;
 import org.openqa.selenium.By;
 
 public class MainPage extends BaseForm {
@@ -17,11 +15,7 @@ public class MainPage extends BaseForm {
             "widgets");
 
     public MainPage() {
-        super(By.xpath("//*[@id='app']"), "mainPage");
-    }
-
-    public void openMainPage() {
-        DriverManager.getInstance().getDriver().get(Configuration.getUrl());
+        super(new TextElement(By.xpath("//*[@id='app']"), "mainPageUniqElement"), "mainPage");
     }
 
     public void clickAlertCard() {

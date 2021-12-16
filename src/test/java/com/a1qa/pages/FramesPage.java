@@ -15,7 +15,7 @@ public class FramesPage extends BaseForm {
             By.xpath("//h1[@id='sampleHeading']"), "botIframeElementBody");
 
     public FramesPage() {
-        super(By.xpath("//section[@id='botton-text-10']"), "framesPage");
+        super(new TextElement(By.xpath("//section[@id='botton-text-10']"), "framesPageUniqElement"), "framesPage");
     }
 
     public String getTextFromTopFrame() {

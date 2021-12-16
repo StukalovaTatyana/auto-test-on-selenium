@@ -14,10 +14,11 @@ public class InputElement extends BaseElement {
         findElement().sendKeys(text);
     }
 
-    public String getValue(){
+    public String getValue() {
         return findElement().getAttribute("value");
     }
-    public void sendKeys(Keys key){
+
+    public void sendKeys(Keys key) {
         findElement().sendKeys(key);
     }
 }

@@ -1,6 +1,7 @@
 package com.a1qa.pages;
 
 import com.a1qa.elements.ButtonElement;
+import com.a1qa.elements.TextElement;
 import com.a1qa.utils.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +14,7 @@ public class LinksPage extends BaseForm {
             By.xpath("//a[@id='simpleLink']"), "simpleLink");
 
     public LinksPage() {
-        super(By.xpath("//section[@id='botton-text-10']"), "linksPage");
+        super(new TextElement(By.xpath("//section[@id='botton-text-10']"), "linksPageUniqElement"), "linksPage");
     }
 
     public void clickSimpleLink() {
@@ -21,7 +22,7 @@ public class LinksPage extends BaseForm {
     }
 
     public void switchToNewTab() {
-        WebDriver driver = DriverManager.getInstance().getDriver();
+        WebDriver driver = DriverManager.getInstance();
         String mainWindow = driver.getWindowHandle();
         Set<String> setWindows = driver.getWindowHandles();
         Iterator<String> iterator = setWindows.iterator();

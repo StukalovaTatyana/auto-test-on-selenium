@@ -1,11 +1,14 @@
 package com.a1qa.pages;
 
+import com.a1qa.config.Configuration;
 import com.a1qa.elements.*;
 import com.a1qa.utils.DriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,10 +37,12 @@ public class ElementsPage extends BaseForm {
             By.xpath("//button[@id='submit']"), "submitButton");
     private final ButtonElement deleteButton = new ButtonElement(
             By.xpath("//span[@id='delete-record-3']"), "deleteButton");
+    private final ElementsList tableRows = new ElementsList(
+            By.xpath("//div[@class='rt-tr-group']"), "tableRows"
+    );
 
     public ElementsPage() {
-        super(By.xpath("//section[@id='botton-text-10']"), "elementsPage");
-
+        super(new TextElement(By.xpath("//section[@id='botton-text-10']"), "elementsPageUniqElement"), "elementsPage");
     }
 
     public void clickWebTablesListElement() {
@@ -82,15 +87,23 @@ public class ElementsPage extends BaseForm {
         departmentElement.sendText(department);
     }
 
-    public void clickSubmitButton() throws InterruptedException {
+    public void clickSubmitButton() {
+        WebElement form = formElement.findElement();
         submitButton.click();
-        Thread.sleep(1000);
+        WebDriverWait wait = new WebDriverWait(DriverManager.getInstance(), Duration.ofSeconds(Configuration.getDefaultMiddleTimeout()));
+        wait.pollingEvery(Duration.ofMillis(Configuration.getDefaultPolingRateMilli()));
+        wait.until(ExpectedConditions.invisibilityOf(form));
     }
 
     public List<String> findTableRows() {
-        WebDriver driver = DriverManager.getInstance().getDriver();
-        List<WebElement> elements = driver.findElements(By.xpath("//div[@class='rt-tr-group']"));
-        return elements.stream().map(webElement -> webElement.getText().replace(" ", "")).filter(s -> !s.equals("")).collect(Collectors.toList());
+        return tableRows
+                .findElements()
+                .stream()
+                .map(webElement -> webElement
+                        .getText()
+                        .replace(" ", ""))
+                .filter(s -> !s.equals(""))
+                .collect(Collectors.toList());
     }
 
     public void clickDeleteButton() {

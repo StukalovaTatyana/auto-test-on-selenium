@@ -1,5 +1,8 @@
 package com.a1qa;
 
+import com.a1qa.pages.AlertPage;
+import com.a1qa.pages.MainPage;
+import com.a1qa.utils.DriverManager;
 import com.a1qa.utils.Generator;
 import org.openqa.selenium.Alert;
 import org.testng.annotations.Test;
@@ -9,11 +12,15 @@ import static org.testng.Assert.*;
 public class AlertTest extends BaseTest {
     @Test
     public void alertTest() {
-        mainPage.openMainPage();
-        assertTrue(mainPage.isPageOpened(),"The main page does not open");
+        MainPage mainPage = new MainPage();
+
+        DriverManager.openMainPage();
+        assertTrue(mainPage.waitForPageToOpenAndCheckIfOpen(), "The main page does not open");
 
         mainPage.clickAlertCard();
-        assertTrue(alertPage.isPageOpened(), "The card is not pressed");
+        AlertPage alertPage = new AlertPage();
+
+        assertTrue(alertPage.waitForPageToOpenAndCheckIfOpen(), "The card is not pressed");
 
         alertPage.clickAlertListElement();
         assertTrue(alertPage.isAlertFormDisplayed(), "The alert doesn't show up");

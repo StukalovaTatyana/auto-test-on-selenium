@@ -47,6 +47,10 @@ public class Configuration {
         return Integer.parseInt(getProperty("defaultShortTimeout"));
     }
 
+    public static int getDefaultPolingRateMilli() {
+        return Integer.parseInt(getProperty("defaultPolingRateMilli"));
+    }
+
     public static String getLang() {
         return getProperty("lang");
     }

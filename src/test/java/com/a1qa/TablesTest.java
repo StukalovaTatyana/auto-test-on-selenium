@@ -1,5 +1,8 @@
 package com.a1qa;
 
+import com.a1qa.pages.ElementsPage;
+import com.a1qa.pages.MainPage;
+import com.a1qa.utils.DriverManager;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -9,15 +12,18 @@ import static org.testng.Assert.*;
 public class TablesTest extends BaseTest {
 
     @Test
-    public void tablesTest() throws InterruptedException {
-        mainPage.openMainPage();
-        assertTrue(mainPage.isPageOpened(), "The main page does not open");
+    public void tablesTest() {
+        MainPage mainPage = new MainPage();
+        DriverManager.openMainPage();
+        assertTrue(mainPage.waitForPageToOpenAndCheckIfOpen(), "The main page does not open");
 
         mainPage.clickElementsCard();
-        assertTrue(elementsPage.isPageOpened(), "The page with Web Tables does not open");
+        ElementsPage elementsPage = new ElementsPage();
+        assertTrue(elementsPage.waitForPageToOpenAndCheckIfOpen(), "The page with Web Tables does not open");
 
         elementsPage.clickWebTablesListElement();
-        assertTrue(elementsPage.isTableDisplayed(), "The Registration Form does not appear on the page");
+        assertTrue(elementsPage.isTableDisplayed(),
+                "The Registration Form does not appear on the page");
 
         elementsPage.clickAddButton();
         assertTrue(elementsPage.isFormDisplayed(), "The registration form is not closed");
@@ -48,6 +54,7 @@ public class TablesTest extends BaseTest {
         }
         elementsPage.clickDeleteButton();
         int sizeAfterDelete = elementsPage.findTableRows().size();
-        assertTrue(sizeBeforeDelete > sizeAfterDelete, "The number of records in the table has not changed.");
+        assertTrue(sizeBeforeDelete > sizeAfterDelete,
+                "The number of records in the table has not changed.");
     }
 }

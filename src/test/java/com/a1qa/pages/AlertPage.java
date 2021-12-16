@@ -30,7 +30,8 @@ public class AlertPage extends BaseForm {
             By.xpath("//span[@id='promptResult']"), "promptResult");
 
     public AlertPage() {
-        super(By.xpath("//section[@id='botton-text-10']"), "alertPage");
+        super(new TextElement(By.xpath("//section[@id='botton-text-10']"), "alertPageUniqElement"),
+                "alertPage");
     }
 
     public void clickAlertListElement() {
@@ -52,7 +53,7 @@ public class AlertPage extends BaseForm {
 
     public Alert switchToAlert() {
         try {
-            return DriverManager.getInstance().getDriver().switchTo().alert();
+            return DriverManager.getInstance().switchTo().alert();
         } catch (NoAlertPresentException e) {
             return null;
         }
@@ -63,7 +64,7 @@ public class AlertPage extends BaseForm {
     }
 
     public Alert waitForAlert(int duration) {
-        WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getDriver(), Duration.ofSeconds(duration));
+        WebDriverWait wait = new WebDriverWait(DriverManager.getInstance(), Duration.ofSeconds(duration));
         return wait.until(driver -> driver.switchTo().alert());
     }
 

@@ -1,27 +1,27 @@
 package com.a1qa.utils;
 
+import com.a1qa.config.Configuration;
 import org.openqa.selenium.WebDriver;
 
 public class DriverManager {
-    private static DriverManager instance;
-    private WebDriver driver;
+    private static WebDriver driver;
 
     private DriverManager() {
     }
 
-    public WebDriver openBrowser() {
-        this.driver = BrowserFactory.getWebDriver();
-        return this.driver;
+    public static WebDriver openBrowser() {
+        driver = BrowserFactory.getWebDriver();
+        return driver;
     }
 
-    public static DriverManager getInstance() {
-        if (instance == null) {
-            instance = new DriverManager();
+    public static WebDriver getInstance() {
+        if (driver == null) {
+            openBrowser();
         }
-        return instance;
+        return driver;
     }
 
-    public WebDriver getDriver() {
-        return this.driver;
+    public static void openMainPage() {
+        getInstance().get(Configuration.getUrl());
     }
 }

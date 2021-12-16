@@ -29,7 +29,7 @@ public class WidgetsPage extends BaseForm {
             By.xpath("//div[@class='progress-bar bg-info']"), "progressBarElement");
 
     public WidgetsPage() {
-        super(By.xpath("//section[@id='botton-text-10']"), "widgetPage");
+        super(new TextElement(By.xpath("//section[@id='botton-text-10']"), "widgetPageUniqElement"), "widgetPage");
     }
 
     public void clickSliderListElement() {
@@ -84,9 +84,9 @@ public class WidgetsPage extends BaseForm {
     }
 
     public void clickStopAge(int age) {
-        WebDriverWait wait = new WebDriverWait(DriverManager.getInstance().getDriver(), Duration.ofSeconds(Configuration.getDefaultLongTimeout()));
-        wait.pollingEvery(Duration.ofMillis(50));
-        Boolean until = wait.until(
+        WebDriverWait wait = new WebDriverWait(DriverManager.getInstance(), Duration.ofSeconds(Configuration.getDefaultLongTimeout()));
+        wait.pollingEvery(Duration.ofMillis(Configuration.getDefaultPolingRateMilli()));
+        wait.until(
                 ExpectedConditions.attributeContains(progressBarElement.findElement(),
                         "aria-valuenow",
                         String.valueOf(age))

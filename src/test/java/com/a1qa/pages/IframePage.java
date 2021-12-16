@@ -20,7 +20,7 @@ public class IframePage extends BaseForm {
             By.xpath("//body"), "childFrameBody");
 
     public IframePage() {
-        super(By.xpath("//section[@id='botton-text-10']"), "iframePage");
+        super(new TextElement(By.xpath("//section[@id='botton-text-10']"), "iframePageUniqElement"), "iframePage");
     }
 
     public void clickIframeListElement() {

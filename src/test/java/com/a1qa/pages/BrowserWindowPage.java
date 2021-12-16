@@ -23,7 +23,7 @@ public class BrowserWindowPage extends BaseForm {
             "linkElement");
 
     public BrowserWindowPage() {
-        super(By.xpath("//section[@id='botton-text-10']"), "elementsPage");
+        super(new TextElement(By.xpath("//section[@id='botton-text-10']"), "browserWindowPageUniqElement"), "browserWindowPage");
     }
 
     public void clickBrowserWindowElement() {
@@ -45,7 +45,7 @@ public class BrowserWindowPage extends BaseForm {
     }
 
     public void closeNewTab() {
-        WebDriver driver = DriverManager.getInstance().getDriver();
+        WebDriver driver = DriverManager.getInstance();
         String mainWindow = driver.getWindowHandle();
         Set<String> setWindows = driver.getWindowHandles();
         Iterator<String> iterator = setWindows.iterator();
