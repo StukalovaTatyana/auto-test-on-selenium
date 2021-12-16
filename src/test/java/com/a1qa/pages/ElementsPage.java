@@ -1,8 +1,9 @@
 package com.a1qa.pages;
 
 import com.a1qa.config.Configuration;
-import com.a1qa.elements.*;
-import com.a1qa.utils.DriverManager;
+import com.a1qa.framework.elements.impl.*;
+import com.a1qa.framework.form.BaseForm;
+import com.a1qa.framework.utils.DriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;

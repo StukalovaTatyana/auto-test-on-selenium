@@ -1,5 +1,6 @@
-package com.a1qa.elements;
+package com.a1qa.framework.elements.impl;
 
+import com.a1qa.framework.elements.BaseElement;
 import org.openqa.selenium.By;
 
 public class ButtonElement extends BaseElement {

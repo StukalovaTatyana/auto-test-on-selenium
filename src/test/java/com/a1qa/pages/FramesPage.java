@@ -1,7 +1,8 @@
 package com.a1qa.pages;
 
-import com.a1qa.elements.IFrameElement;
-import com.a1qa.elements.TextElement;
+import com.a1qa.framework.elements.impl.IFrameElement;
+import com.a1qa.framework.elements.impl.TextElement;
+import com.a1qa.framework.form.BaseForm;
 import org.openqa.selenium.By;
 
 public class FramesPage extends BaseForm {

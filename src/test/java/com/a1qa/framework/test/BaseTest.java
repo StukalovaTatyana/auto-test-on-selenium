@@ -1,6 +1,6 @@
-package com.a1qa;
+package com.a1qa.framework.test;
 
-import com.a1qa.utils.DriverManager;
+import com.a1qa.framework.utils.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;

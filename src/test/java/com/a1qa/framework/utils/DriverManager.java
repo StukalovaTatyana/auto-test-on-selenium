@@ -1,4 +1,4 @@
-package com.a1qa.utils;
+package com.a1qa.framework.utils;
 
 import com.a1qa.config.Configuration;
 import org.openqa.selenium.WebDriver;

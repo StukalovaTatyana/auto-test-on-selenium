@@ -1,7 +1,6 @@
-package com.a1qa.elements;
+package com.a1qa.framework.elements.impl;
 
-import com.a1qa.utils.DriverManager;
-import com.a1qa.utils.LoggerManager;
+import com.a1qa.framework.utils.DriverManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

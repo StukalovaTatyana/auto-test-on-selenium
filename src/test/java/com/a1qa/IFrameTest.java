@@ -1,10 +1,10 @@
 package com.a1qa;
 
-import com.a1qa.elements.IFrameElement;
+import com.a1qa.framework.test.BaseTest;
+import com.a1qa.framework.utils.DriverManager;
 import com.a1qa.pages.FramesPage;
 import com.a1qa.pages.IframePage;
 import com.a1qa.pages.MainPage;
-import com.a1qa.utils.DriverManager;
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
@@ -12,7 +12,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class IFrameTest extends BaseTest {
-    final static Logger LOGGER = Logger.getLogger(IFrameElement.class.toString());
+    final static Logger LOGGER = Logger.getLogger(IFrameTest.class.toString());
 
     @Test
     public void iframeTest() {

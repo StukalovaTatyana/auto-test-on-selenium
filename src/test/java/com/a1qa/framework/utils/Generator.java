@@ -1,4 +1,4 @@
-package com.a1qa.utils;
+package com.a1qa.framework.utils;
 
 import java.util.Random;
 

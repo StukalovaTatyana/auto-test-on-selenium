@@ -1,10 +1,10 @@
 package com.a1qa;
 
-import com.a1qa.elements.IFrameElement;
+import com.a1qa.framework.test.BaseTest;
+import com.a1qa.framework.utils.DriverManager;
+import com.a1qa.framework.utils.Generator;
 import com.a1qa.pages.AlertPage;
 import com.a1qa.pages.MainPage;
-import com.a1qa.utils.DriverManager;
-import com.a1qa.utils.Generator;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.testng.annotations.Test;
@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import static org.testng.Assert.*;
 
 public class AlertTest extends BaseTest {
-    final static Logger LOGGER = Logger.getLogger(IFrameElement.class.toString());
+    final static Logger LOGGER = Logger.getLogger(AlertTest.class.toString());
 
     @Test
     public void alertTest() {

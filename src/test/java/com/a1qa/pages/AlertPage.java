@@ -1,9 +1,10 @@
 package com.a1qa.pages;
 
-import com.a1qa.elements.ButtonElement;
-import com.a1qa.elements.ListItemElement;
-import com.a1qa.elements.TextElement;
-import com.a1qa.utils.DriverManager;
+import com.a1qa.framework.elements.impl.ButtonElement;
+import com.a1qa.framework.elements.impl.ListItemElement;
+import com.a1qa.framework.elements.impl.TextElement;
+import com.a1qa.framework.form.BaseForm;
+import com.a1qa.framework.utils.DriverManager;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;

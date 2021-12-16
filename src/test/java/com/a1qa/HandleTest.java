@@ -1,18 +1,18 @@
 package com.a1qa;
 
-import com.a1qa.elements.IFrameElement;
+import com.a1qa.framework.test.BaseTest;
+import com.a1qa.framework.utils.DriverManager;
 import com.a1qa.pages.AlertPage;
 import com.a1qa.pages.BrowserWindowPage;
 import com.a1qa.pages.LinksPage;
 import com.a1qa.pages.MainPage;
-import com.a1qa.utils.DriverManager;
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
 public class HandleTest extends BaseTest {
-    final static Logger LOGGER = Logger.getLogger(IFrameElement.class.toString());
+    final static Logger LOGGER = Logger.getLogger(HandleTest.class.toString());
 
     @Test
     public void handleTest() {

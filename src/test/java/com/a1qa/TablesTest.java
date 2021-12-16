@@ -1,9 +1,9 @@
 package com.a1qa;
 
-import com.a1qa.elements.IFrameElement;
+import com.a1qa.framework.test.BaseTest;
+import com.a1qa.framework.utils.DriverManager;
 import com.a1qa.pages.ElementsPage;
 import com.a1qa.pages.MainPage;
-import com.a1qa.utils.DriverManager;
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
@@ -12,7 +12,7 @@ import java.util.List;
 import static org.testng.Assert.*;
 
 public class TablesTest extends BaseTest {
-    final static Logger LOGGER = Logger.getLogger(IFrameElement.class.toString());
+    final static Logger LOGGER = Logger.getLogger(TablesTest.class.toString());
 
     @Test
     public void tablesTest() {

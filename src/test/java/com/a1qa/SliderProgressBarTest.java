@@ -1,10 +1,10 @@
 package com.a1qa;
 
-import com.a1qa.elements.IFrameElement;
+import com.a1qa.framework.test.BaseTest;
+import com.a1qa.framework.utils.DriverManager;
+import com.a1qa.framework.utils.Generator;
 import com.a1qa.pages.MainPage;
 import com.a1qa.pages.WidgetsPage;
-import com.a1qa.utils.DriverManager;
-import com.a1qa.utils.Generator;
 import org.apache.log4j.Logger;
 import org.testng.annotations.Test;
 
@@ -13,7 +13,7 @@ import static org.testng.Assert.assertTrue;
 
 
 public class SliderProgressBarTest extends BaseTest {
-    final static Logger LOGGER = Logger.getLogger(IFrameElement.class.toString());
+    final static Logger LOGGER = Logger.getLogger(SliderProgressBarTest.class.toString());
     private final int age = 26;
     private final int errorRate = 2;
 

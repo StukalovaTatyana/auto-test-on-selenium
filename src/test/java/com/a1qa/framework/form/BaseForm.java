@@ -1,11 +1,10 @@
-package com.a1qa.pages;
+package com.a1qa.framework.form;
 
-import com.a1qa.elements.BaseElement;
-import com.a1qa.elements.IFrameElement;
+import com.a1qa.framework.elements.BaseElement;
 import org.apache.log4j.Logger;
 
 public abstract class BaseForm {
-    final static Logger LOGGER = Logger.getLogger(IFrameElement.class.toString());
+    final static Logger LOGGER = Logger.getLogger(BaseForm.class.toString());
 
     private final BaseElement uniqElement;
     private final String name;
